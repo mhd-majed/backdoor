@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-pr: #000000;
+  --color-dark: #000000;
+  --color-acc: #e53935;
+  --color-grayTone: #d9d9d9;
+  --color-white: #fafafa;
+
+  /* ✅ Fonts (font namespace) */
+  --font-heading: Geist, sans-serif;
+  --font-body: Geist, sans-serif;
+
+  /* ✅ Font sizes (text namespace) */
+  --text-h1: 4.75rem;
+  --text-h2: 1.875rem;
+  --text-h3: 1.5rem;
+  --text-h5: 1.25rem;
+  --text-h6: 1.5rem;
+  --text-p: 1.25rem;
+  --text-pSm: 1rem;
+}
+
+body,
+html {
+  background-color: #000000;
+}
