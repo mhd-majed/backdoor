@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface CardProps {
   iconClass: string;
@@ -31,43 +32,44 @@ const Card: React.FC<CardProps> = ({
 );
 
 const FeaturedSection: React.FC = () => {
+  const { t } = useTranslation();
+
   const cardsData: CardProps[] = [
     {
       iconClass: "fab fa-react",
       iconColorClass: "text-white",
       iconBgGradient: "from-acc/20 to-acc/40",
-      title: "React Development",
-      description:
-        "The library for web and native user interfaces. Next.js is built on the latest React features, including Server Components and Actions.",
+      title: t("featured.cards.react.title"),
+      description: t("featured.cards.react.desc"),
     },
     {
       iconClass: "fas fa-code",
       iconColorClass: "text-blue-400",
       iconBgGradient: "from-blue-500/20 to-blue-500/40",
-      title: "Web Development",
-      description:
-        "Modern web applications with cutting-edge technologies. Built for performance, scalability, and exceptional user experience.",
+      title: t("featured.cards.web.title"),
+      description: t("featured.cards.web.desc"),
     },
     {
       iconClass: "fas fa-mobile-alt",
       iconColorClass: "text-green-400",
       iconBgGradient: "from-green-500/20 to-green-500/40",
-      title: "Mobile Solutions",
-      description:
-        "Cross-platform mobile applications with native performance. Seamless user experience across iOS and Android platforms.",
+      title: t("featured.cards.mobile.title"),
+      description: t("featured.cards.mobile.desc"),
     },
     {
       iconClass: "fas fa-cloud",
       iconColorClass: "text-purple-400",
       iconBgGradient: "from-purple-500/20 to-purple-500/40",
-      title: "Cloud Solutions",
-      description:
-        "Scalable cloud infrastructure and deployment solutions. Optimized for performance, security, and cost-effectiveness.",
+      title: t("featured.cards.cloud.title"),
+      description: t("featured.cards.cloud.desc"),
     },
   ];
 
   return (
-    <section className="featuredSection bg-pr text-white relative overflow-hidden mb-10">
+    <section
+      className="featuredSection bg-pr text-white relative overflow-hidden mb-10 scroll-mt-24"
+      id="featuredSection"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-64 h-64 border border-white rounded-full animate-pulse"></div>
@@ -79,12 +81,10 @@ const FeaturedSection: React.FC = () => {
         {/* Header Section */}
         <div className="max-w-6xl text-center">
           <h2 className="text-h2 font-heading font-bold tracking-tighter mb-6 bg-gradient-to-r from-white to-grayTone bg-clip-text text-transparent">
-            Our Featured Solutions
+            {t("featured.header")}
           </h2>
           <p className="text-p py-6 mb-5 max-w-3xl mx-auto text-grayTone leading-relaxed">
-            Used by some of the world's largest companies, Next.js enables you
-            to create high-quality web applications with the power of React
-            components.
+            {t("featured.desc")}
           </p>
           <div className="w-24 h-1 bg-acc mx-auto rounded-full"></div>
         </div>

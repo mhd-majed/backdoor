@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -49,44 +50,48 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 );
 
 const ProjectsSection: React.FC = () => {
+  const { t } = useTranslation();
+
   const projects = [
     {
       imageSrc:
         "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-      altText: "E-Commerce Platform",
-      title: "E-Commerce Platform",
-      description:
-        "Modern e-commerce solution with real-time inventory management",
+      altText: t("projects.cards.ecommerce.altText"),
+      title: t("projects.cards.ecommerce.title"),
+      description: t("projects.cards.ecommerce.description"),
       tags: ["React", "Next.js"],
     },
     {
       imageSrc:
         "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-      altText: "SaaS Dashboard",
-      title: "SaaS Dashboard",
-      description: "Analytics dashboard with real-time data visualization",
+      altText: t("projects.cards.saas.altText"),
+      title: t("projects.cards.saas.title"),
+      description: t("projects.cards.saas.description"),
       tags: ["TypeScript", "Node.js"],
     },
     {
       imageSrc:
         "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-      altText: "Mobile App",
-      title: "Mobile App",
-      description: "Cross-platform app with seamless user experience",
+      altText: t("projects.cards.mobile.altText"),
+      title: t("projects.cards.mobile.title"),
+      description: t("projects.cards.mobile.description"),
       tags: ["React Native", "Firebase"],
     },
     {
       imageSrc:
         "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-      altText: "AI Platform",
-      title: "AI Platform",
-      description: "Intelligent automation with machine learning algorithms",
+      altText: t("projects.cards.ai.altText"),
+      title: t("projects.cards.ai.title"),
+      description: t("projects.cards.ai.description"),
       tags: ["Python", "TensorFlow"],
     },
   ];
 
   return (
-    <section className="projectsSection bg-pr text-white relative overflow-hidden mb-10">
+    <section
+      className="projectsSection bg-pr text-white relative overflow-hidden mb-10 scroll-mt-16"
+      id="projectsSection"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-64 h-64 border border-white rounded-full animate-pulse"></div>
@@ -98,13 +103,11 @@ const ProjectsSection: React.FC = () => {
         {/* Header Section */}
         <div className="max-w-6xl text-center">
           <h2 className="text-h2 font-heading font-bold tracking-tighter mb-6 bg-gradient-to-r from-white to-grayTone bg-clip-text text-transparent">
-            Proud Projects That make Us Stand Out
+            {t("projects.header")}
           </h2>
           <div className="w-24 h-1 bg-acc mx-auto rounded-full mb-6"></div>
           <p className="text-p py-2 max-w-3xl mx-auto text-grayTone leading-relaxed">
-            Used by some of the world's largest companies, Next.js enables you
-            to create high-quality web applications with the power of React
-            components.
+            {t("projects.description")}
           </p>
         </div>
 

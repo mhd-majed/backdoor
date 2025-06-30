@@ -1,4 +1,6 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import "../../i18n";
 
 interface TechCardProps {
   title: string;
@@ -33,43 +35,40 @@ const TechCard: React.FC<TechCardProps> = ({
 };
 
 const UsedTechSection: React.FC = () => {
+  const { t } = useTranslation();
+
   const techList = [
     {
-      title: "React",
-      description:
-        "The library for web and native user interfaces. Built on the latest React features, including Server Components and Actions.",
+      title: t("usedTech.cards.react.title"),
+      description: t("usedTech.cards.react.desc"),
       iconClass: "fab fa-react",
       iconColorClass: "text-white",
       iconBgGradient: "from-acc/20 to-acc/40",
     },
     {
-      title: "Next.js",
-      description:
-        "The React framework for production. Provides the best developer experience with all features needed for production.",
+      title: t("usedTech.cards.nextjs.title"),
+      description: t("usedTech.cards.nextjs.desc"),
       iconClass: "fab fa-js-square",
       iconColorClass: "text-black",
       iconBgGradient: "from-white/20 to-white/40",
     },
     {
-      title: "TypeScript",
-      description:
-        "JavaScript with syntax for types. Helps catch errors early through static type checking and provides rich IDE support.",
+      title: t("usedTech.cards.typescript.title"),
+      description: t("usedTech.cards.typescript.desc"),
       iconClass: "fab fa-js-square",
       iconColorClass: "text-blue-400",
       iconBgGradient: "from-blue-500/20 to-blue-500/40",
     },
     {
-      title: "Tailwind CSS",
-      description:
-        "A utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.",
+      title: t("usedTech.cards.tailwind.title"),
+      description: t("usedTech.cards.tailwind.desc"),
       iconClass: "fab fa-css3-alt",
       iconColorClass: "text-cyan-400",
       iconBgGradient: "from-cyan-500/20 to-cyan-500/40",
     },
     {
-      title: "Node.js",
-      description:
-        "JavaScript runtime built on Chrome's V8 engine. Enables building scalable network applications with event-driven architecture.",
+      title: t("usedTech.cards.node.title"),
+      description: t("usedTech.cards.node.desc"),
       iconClass: "fab fa-node-js",
       iconColorClass: "text-green-400",
       iconBgGradient: "from-green-500/20 to-green-500/40",
@@ -77,23 +76,23 @@ const UsedTechSection: React.FC = () => {
   ];
 
   return (
-    <section className="usedTechSection bg-pr text-white relative overflow-hidden mb-10">
+    <section
+      className="usedTechSection bg-pr text-white relative overflow-hidden mb-10 scroll-mt-16"
+      id="usedTechSection"
+    >
       <div className="flex flex-col items-center justify-center gap-8 p-8 min-h-[70vh] relative z-10">
-        {/* Header */}
         <div className="max-w-6xl text-center">
           <h2 className="text-h2 font-heading font-bold tracking-tighter mb-6 bg-gradient-to-r from-white to-grayTone bg-clip-text text-transparent">
-            Built on a foundation of fast, production-grade tooling
+            {t("usedTech.header")}
           </h2>
           <div className="w-24 h-1 bg-acc mx-auto rounded-full"></div>
         </div>
 
-        {/* Grid */}
         <div className="w-full max-w-[1200px] mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* React */}
             <TechCard {...techList[0]} />
 
-            {/* Unique Powered By Card */}
+            {/* Powered By */}
             <div className="group card border border-white/10 bg-gradient-to-br from-acc/10 to-acc/20 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-acc hover:scale-105 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-acc/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex items-start p-6 h-full">
@@ -102,14 +101,15 @@ const UsedTechSection: React.FC = () => {
                     <i className="fas fa-bolt text-2xl text-acc"></i>
                   </div>
                   <h3 className="text-lg font-heading font-bold text-white mb-1">
-                    Powered By
+                    {t("usedTech.poweredTitle")}
                   </h3>
-                  <p className="text-sm text-white/80">Modern Technologies</p>
+                  <p className="text-sm text-white/80">
+                    {t("usedTech.poweredSub")}
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Remaining Cards */}
             {techList.slice(1).map((tech, index) => (
               <TechCard key={index + 1} {...tech} />
             ))}

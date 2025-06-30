@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface ServiceCardProps {
   title: string;
@@ -35,51 +36,47 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 };
 
 const ServicesSection: React.FC = () => {
+  const { t } = useTranslation();
+
   const services: ServiceCardProps[] = [
     {
-      title: "Web Development",
-      description:
-        "Full-stack web applications using modern frameworks like React, Next.js, and Node.js for scalable and performant solutions.",
+      title: t("services.list.web.title"),
+      description: t("services.list.web.desc"),
       iconClass: "fas fa-code",
       iconColorClass: "text-white",
       iconBgGradient: "from-acc/20 to-acc/40",
     },
     {
-      title: "Mobile Development",
-      description:
-        "Cross-platform mobile applications with React Native and Flutter, delivering native performance across iOS and Android platforms.",
+      title: t("services.list.mobile.title"),
+      description: t("services.list.mobile.desc"),
       iconClass: "fas fa-mobile-alt",
       iconColorClass: "text-blue-400",
       iconBgGradient: "from-blue-500/20 to-blue-500/40",
     },
     {
-      title: "UI/UX Design",
-      description:
-        "User-centered design solutions that create intuitive and engaging experiences, from wireframes to high-fidelity prototypes.",
+      title: t("services.list.design.title"),
+      description: t("services.list.design.desc"),
       iconClass: "fas fa-palette",
       iconColorClass: "text-purple-400",
       iconBgGradient: "from-purple-500/20 to-purple-500/40",
     },
     {
-      title: "Cloud Solutions",
-      description:
-        "Scalable cloud infrastructure and deployment solutions using AWS, Azure, and Google Cloud for reliable and secure applications.",
+      title: t("services.list.cloud.title"),
+      description: t("services.list.cloud.desc"),
       iconClass: "fas fa-cloud",
       iconColorClass: "text-cyan-400",
       iconBgGradient: "from-cyan-500/20 to-cyan-500/40",
     },
     {
-      title: "API Development",
-      description:
-        "Robust RESTful and GraphQL APIs with comprehensive documentation, authentication, and rate limiting for seamless integrations.",
+      title: t("services.list.api.title"),
+      description: t("services.list.api.desc"),
       iconClass: "fas fa-cogs",
       iconColorClass: "text-green-400",
       iconBgGradient: "from-green-500/20 to-green-500/40",
     },
     {
-      title: "Technical Consulting",
-      description:
-        "Strategic technology guidance and architecture planning to help you make informed decisions for your digital transformation journey.",
+      title: t("services.list.consulting.title"),
+      description: t("services.list.consulting.desc"),
       iconClass: "fas fa-lightbulb",
       iconColorClass: "text-yellow-400",
       iconBgGradient: "from-yellow-500/20 to-yellow-500/40",
@@ -87,7 +84,10 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <section className="servicesSection bg-pr text-white relative overflow-hidden mb-10">
+    <section
+      className="servicesSection bg-pr text-white relative overflow-hidden mb-10 scroll-mt-16"
+      id="servicesSection"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-32 left-16 w-72 h-72 border border-white rounded-full animate-pulse"></div>
@@ -99,12 +99,10 @@ const ServicesSection: React.FC = () => {
         {/* Header */}
         <div className="max-w-6xl text-center">
           <h2 className="text-h2 font-heading font-bold tracking-tighter mb-6 bg-gradient-to-r from-white to-grayTone bg-clip-text text-transparent">
-            Our Services
+            {t("services.header")}
           </h2>
           <p className="text-p py-6 mb-5 max-w-3xl mx-auto text-grayTone leading-relaxed">
-            We provide comprehensive development solutions using cutting-edge
-            technologies to help businesses thrive in the digital landscape with
-            scalable and efficient applications.
+            {t("services.desc")}
           </p>
           <div className="w-24 h-1 bg-acc mx-auto rounded-full"></div>
         </div>

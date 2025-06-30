@@ -1,69 +1,86 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 const Navbar: React.FC = () => {
+  const { t } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "ar" : "en";
+    i18n.changeLanguage(newLang);
+    document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
+  };
+
+  // Smooth scroll to section by ID
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="navbarSection">
-      <div className="navbar bg-pr text-white shadow-sm">
-        {/* Navbar Start */}
+      <div className="navbar bg-pr text-white shadow-sm fixed top-0 left-0 right-0 z-50">
         <div className="navbar-start">
-          {/* Dropdown for small screens */}
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
-            >
-              <li>
-                <a href="#">Item 1</a>
-              </li>
-              <li>
-                <a href="#">Item 2</a>
-              </li>
-              <li>
-                <a href="#">Item 3</a>
-              </li>
-            </ul>
-          </div>
           <a className="btn btn-ghost text-xl" href="#">
-            daisyUI
+            {t("siteName")}
           </a>
         </div>
 
-        {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a href="#">Item 1</a>
+              <a onClick={() => scrollToSection("hero")}>{t("nav.item1")}</a>
             </li>
-            <li>
-              <a href="#">Item 2</a>
+
+            {/* Submenu using dropdown */}
+            <li className="dropdown dropdown-hover">
+              <a tabIndex={0} className="cursor-pointer">
+                {t("nav.item2")}
+              </a>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-pr text-white rounded-box shadow-lg w-52 mt-4 z-[60]"
+              >
+                <li>
+                  <a onClick={() => scrollToSection("usedTechSection")}>
+                    {t("nav.submenu.usedTech")}
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToSection("featuredSection")}>
+                    {t("nav.submenu.featured")}
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToSection("servicesSection")}>
+                    {t("nav.submenu.services")}
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToSection("achievementSection")}>
+                    {t("nav.submenu.achievement")}
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToSection("projectsSection")}>
+                    {t("nav.submenu.projects")}
+                  </a>
+                </li>
+              </ul>
             </li>
+
             <li>
-              <a href="#">Item 3</a>
+              <a onClick={() => scrollToSection("contact")}>{t("nav.item3")}</a>
             </li>
           </ul>
         </div>
 
-        {/* Navbar End */}
         <div className="navbar-end">
-          <a className="btn" href="#">
-            Button
-          </a>
+          <button className="btn" onClick={toggleLanguage}>
+            {i18n.language === "en" ? "العربية" : "English"}
+          </button>
         </div>
       </div>
     </section>
