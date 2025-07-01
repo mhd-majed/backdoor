@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import "../../i18n";
+import i18n from "../../i18n";
 
 interface TechCardProps {
   title: string;
@@ -17,6 +17,8 @@ const TechCard: React.FC<TechCardProps> = ({
   iconColorClass,
   iconBgGradient,
 }) => {
+  const isRTL = i18n.language === "ar";
+
   return (
     <div className="group card border border-white/10 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-acc/50 hover:scale-105">
       <div className="pt-6 px-6 pb-0 flex justify-start">
@@ -26,7 +28,10 @@ const TechCard: React.FC<TechCardProps> = ({
           <i className={`${iconClass} text-xl ${iconColorClass}`}></i>
         </div>
       </div>
-      <div className="card-body p-4 text-left">
+      <div
+        className={`card-body p-4 text-left ${isRTL ? "text-right" : ""}`}
+        dir={isRTL ? "rtl" : "ltr"}
+      >
         <h3 className="card-title text-lg text-white mb-2">{title}</h3>
         <p className="text-sm text-grayTone leading-relaxed">{description}</p>
       </div>
@@ -93,9 +98,7 @@ const UsedTechSection: React.FC = () => {
             <TechCard {...techList[0]} />
 
             {/* Powered By */}
-            <div
-              className=""
-            >
+            <div className="order-first lg:order-none">
               <img
                 src="/pb4.svg"
                 alt="Powered By"

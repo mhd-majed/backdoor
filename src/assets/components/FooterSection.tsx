@@ -6,7 +6,7 @@ const FooterSection: React.FC = () => {
 
   return (
     <section className="footerSection">
-      <footer className="footer footer-horizontal footer-center bg-pr text-white rounded p-10">
+      <footer className="footer footer-horizontal footer-center bg-pr text-white rounded p-10 scroll-mt-16">
         <nav dir="ltr">
           <div className="grid grid-flow-col gap-6 text-xl">
             <a href="#" aria-label={t("footer.social.twitter")}>
@@ -23,7 +23,7 @@ const FooterSection: React.FC = () => {
         <aside>
           <p>
             © {new Date().getFullYear()} -{" "}
-            {t("footer.rights", { company: "ACME Industries Ltd." })}
+            {t("footer.rights", { company: "backdoor" })}
           </p>
         </aside>
       </footer>

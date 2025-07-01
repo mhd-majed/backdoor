@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
+import placeholderIcon from "../images/plachholder_icon.jpg";
 
 const Navbar: React.FC = () => {
   const { t } = useTranslation();
@@ -20,10 +21,18 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <section className="navbarSection">
+    <section className="navbarSection" dir="ltr">
       <div className="navbar bg-pr text-white shadow-sm fixed top-0 left-0 right-0 z-50">
         <div className="navbar-start">
-          <a className="btn btn-ghost text-xl" href="#">
+          <a
+            className="btn btn-ghost text-xl"
+            onClick={() => scrollToSection("hero")}
+          >
+            <img
+              src={placeholderIcon}
+              alt="Site Logo"
+              className="w-6 h-6 object-cover"
+            />
             {t("siteName")}
           </a>
         </div>

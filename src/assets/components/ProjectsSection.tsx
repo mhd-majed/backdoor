@@ -55,7 +55,7 @@ const ProjectsSection: React.FC = () => {
   const projects = [
     {
       imageSrc:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
       altText: t("projects.cards.ecommerce.altText"),
       title: t("projects.cards.ecommerce.title"),
       description: t("projects.cards.ecommerce.description"),
@@ -63,7 +63,7 @@ const ProjectsSection: React.FC = () => {
     },
     {
       imageSrc:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
       altText: t("projects.cards.saas.altText"),
       title: t("projects.cards.saas.title"),
       description: t("projects.cards.saas.description"),
@@ -71,7 +71,7 @@ const ProjectsSection: React.FC = () => {
     },
     {
       imageSrc:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
       altText: t("projects.cards.mobile.altText"),
       title: t("projects.cards.mobile.title"),
       description: t("projects.cards.mobile.description"),
@@ -79,7 +79,7 @@ const ProjectsSection: React.FC = () => {
     },
     {
       imageSrc:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
       altText: t("projects.cards.ai.altText"),
       title: t("projects.cards.ai.title"),
       description: t("projects.cards.ai.description"),

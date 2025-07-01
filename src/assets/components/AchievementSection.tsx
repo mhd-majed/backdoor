@@ -8,7 +8,7 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ value, label }) => (
-  <div className="card bg-pr flex-shrink flex-grow basis-1/4 min-w-[165px] shadow-sm">
+  <div className="card bg-pr flex-grow shadow-sm w-full h-full">
     <div className="card-body pt-6 px-6 pb-0 text-center">
       <h2 className="card-title mx-auto text-h5">{value}</h2>
       <p className="text-pSm">{label}</p>
@@ -49,9 +49,11 @@ const AchievementSection: React.FC = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="flex flex-nowrap md:flex-row flex-col gap-4 p-4 w-full max-w-[1200px]">
+        <div className="flex flex-wrap justify-center gap-4 p-4 w-full max-w-[1200px]">
           {stats.map((stat, index) => (
-            <StatCard key={index} value={stat.value} label={stat.label} />
+            <div key={index} className="flex-1 min-w-[200px] max-w-[250px]">
+              <StatCard value={stat.value} label={stat.label} />
+            </div>
           ))}
         </div>
       </div>
