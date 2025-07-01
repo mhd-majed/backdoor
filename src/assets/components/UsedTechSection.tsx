@@ -93,21 +93,14 @@ const UsedTechSection: React.FC = () => {
             <TechCard {...techList[0]} />
 
             {/* Powered By */}
-            <div className="group card border border-white/10 bg-gradient-to-br from-acc/10 to-acc/20 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-acc hover:scale-105 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-acc/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10 flex items-start p-6 h-full">
-                <div className="text-left">
-                  <div className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-white/20 transition-colors duration-300">
-                    <i className="fas fa-bolt text-2xl text-acc"></i>
-                  </div>
-                  <h3 className="text-lg font-heading font-bold text-white mb-1">
-                    {t("usedTech.poweredTitle")}
-                  </h3>
-                  <p className="text-sm text-white/80">
-                    {t("usedTech.poweredSub")}
-                  </p>
-                </div>
-              </div>
+            <div
+              className=""
+            >
+              <img
+                src="/pb4.svg"
+                alt="Powered By"
+                className="max-h-200 group-hover:opacity-80 transition-opacity duration-300"
+              />
             </div>
 
             {techList.slice(1).map((tech, index) => (
