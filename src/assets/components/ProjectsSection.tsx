@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import project1Image from "../images/project_1.png";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -16,25 +17,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   tags,
 }) => (
-  <div className="group relative h-80 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
+  <div className="group relative h-64 sm:h-72 lg:h-80 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
     <img
       src={imageSrc}
       alt={altText}
-      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-    <div className="absolute bottom-0 left-0 right-0 p-6">
-      <h3 className="text-xl font-heading font-bold text-white mb-2 group-hover:text-acc transition-colors duration-300">
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300"></div>
+    <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
+      <h3 className="text-lg lg:text-xl font-heading font-bold text-white mb-2 group-hover:text-acc transition-colors duration-300 drop-shadow-lg">
         {title}
       </h3>
-      <p className="text-sm text-white/80 mb-3 leading-relaxed">
+      <p className="text-xs lg:text-sm text-white/80 mb-3 leading-relaxed line-clamp-2 drop-shadow-md">
         {description}
       </p>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1 lg:gap-2">
         {tags.map((tag, i) => (
           <span
             key={i}
-            className="badge badge-outline border-acc/50 text-acc text-xs bg-black/30"
+            className="badge badge-outline border-acc/50 text-acc text-xs bg-black/50 group-hover:bg-black/70 px-2 py-1 drop-shadow-md transition-colors duration-300"
           >
             {tag}
           </span>
@@ -42,8 +43,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
     </div>
     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <div className="w-10 h-10 bg-acc/80 rounded-full flex items-center justify-center backdrop-blur-sm">
-        <i className="fas fa-external-link-alt text-white text-sm"></i>
+      <div className="w-8 h-8 lg:w-10 lg:h-10 bg-acc/80 rounded-full flex items-center justify-center backdrop-blur-sm drop-shadow-lg">
+        <i className="fas fa-external-link-alt text-white text-xs lg:text-sm"></i>
       </div>
     </div>
   </div>
@@ -54,32 +55,28 @@ const ProjectsSection: React.FC = () => {
 
   const projects = [
     {
-      imageSrc:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
+      imageSrc: project1Image,
       altText: t("projects.cards.ecommerce.altText"),
       title: t("projects.cards.ecommerce.title"),
       description: t("projects.cards.ecommerce.description"),
       tags: ["React", "Next.js"],
     },
     {
-      imageSrc:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
+      imageSrc: project1Image,
       altText: t("projects.cards.saas.altText"),
       title: t("projects.cards.saas.title"),
       description: t("projects.cards.saas.description"),
       tags: ["TypeScript", "Node.js"],
     },
     {
-      imageSrc:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
+      imageSrc: project1Image,
       altText: t("projects.cards.mobile.altText"),
       title: t("projects.cards.mobile.title"),
       description: t("projects.cards.mobile.description"),
       tags: ["React Native", "Firebase"],
     },
     {
-      imageSrc:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F03%2F10%2Fbb%2F0310bb83c93236c32ae6ce686b7c5883.jpg&f=1&nofb=1&ipt=e014c5b8979976a2f2e09df5138d5c19d8788e8c0b1f40a85c0c49a274c66842",
+      imageSrc: project1Image,
       altText: t("projects.cards.ai.altText"),
       title: t("projects.cards.ai.title"),
       description: t("projects.cards.ai.description"),
@@ -111,9 +108,9 @@ const ProjectsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - 2x2 Layout */}
         <div className="w-full max-w-[1200px] mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
             {projects.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))}

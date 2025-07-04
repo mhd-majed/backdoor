@@ -18,7 +18,7 @@
   --font-body-ar: "Cairo", "Tajawal", sans-serif;
 
   /* ✅ Font sizes (text namespace) */
-  --text-h1: 4.75rem;
+  --text-h1: max(48px, min(5vw, 76px));
   --text-h2: 1.875rem;
   --text-h3: 1.5rem;
   --text-h5: 1.25rem;
@@ -47,4 +47,8 @@ html[dir="rtl"] h4,
 html[dir="rtl"] h5,
 html[dir="rtl"] h6 {
   font-family: var(--font-heading);
+}
+
+[lang="en"] {
+  font-family: Geist, sans-serif;
 }
