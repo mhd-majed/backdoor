@@ -112,6 +112,9 @@
   "projects": {
     "header": "Proud Projects That make Us Stand Out",
     "description": "Used by some of the world's largest companies, Next.js enables you to create high-quality web applications with the power of React components.",
+    "popup": {
+      "contactMessage": "To know more about our work, contact us."
+    },
     "cards": {
       "ecommerce": {
         "altText": "E-Commerce Platform",

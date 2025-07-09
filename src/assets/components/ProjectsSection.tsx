@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import project1Image from "../images/project_1.png";
 
@@ -8,6 +8,20 @@ interface ProjectCardProps {
   title: string;
   description: string;
   tags: string[];
+  onClick: () => void;
+}
+
+interface ProjectPopupProps {
+  project: {
+    imageSrc: string;
+    altText: string;
+    title: string;
+    description: string;
+    tags: string[];
+  } | null;
+  isOpen: boolean;
+  onClose: () => void;
+  onContactUs: () => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -16,8 +30,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
   tags,
+  onClick,
 }) => (
-  <div className="group relative h-64 sm:h-72 lg:h-80 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
+  <div 
+    className="group relative h-64 sm:h-72 lg:h-80 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer"
+    onClick={onClick}
+  >
     <img
       src={imageSrc}
       alt={altText}
@@ -50,8 +68,86 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   </div>
 );
 
+const ProjectPopup: React.FC<ProjectPopupProps> = ({
+  project,
+  isOpen,
+  onClose,
+  onContactUs,
+}) => {
+  const { t } = useTranslation();
+  if (!isOpen || !project) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+      <div className="bg-pr rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-8 h-8 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors duration-200 z-10"
+        >
+          <i className="fas fa-times text-black"></i>
+        </button>
+
+        {/* Project Image */}
+        <div className="relative h-64 overflow-hidden rounded-t-xl">
+          <img
+            src={project.imageSrc}
+            alt={project.altText}
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        </div>
+
+        {/* Project Details */}
+        <div className="p-6">
+          <h3 className="text-2xl font-heading font-bold text-white mb-4">
+            {project.title}
+          </h3>
+          
+          <p className="text-white mb-6 leading-relaxed">
+            {project.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tags.map((tag, i) => (
+              <span
+                key={i}
+                className="px-3 py-1 bg-acc/10 text-acc border border-acc/20 rounded-full text-sm font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="mb-3">
+            <h4 text-2xl font-heading font-bold text-white mb-4>
+            {t("projects.popup.contactMessage")}
+            </h4>
+          </div>
+          {/* Contact Us Button */}
+          <button
+            onClick={onContactUs}
+            className="w-full bg-white text-pr font-semibold py-3 px-6 rounded-lg hover:bg-grayTone hover:scale-102 transition-all duration-300 shadow-lg border-0 flex items-center justify-center gap-2"
+          >
+            {t("contact.button")}
+          </button>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ProjectsSection: React.FC = () => {
   const { t } = useTranslation();
+  const [selectedProject, setSelectedProject] = useState<{
+    imageSrc: string;
+    altText: string;
+    title: string;
+    description: string;
+    tags: string[];
+  } | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const projects = [
     {
@@ -75,14 +171,22 @@ const ProjectsSection: React.FC = () => {
       description: t("projects.cards.mobile.description"),
       tags: ["React Native", "Firebase"],
     },
-    {
-      imageSrc: project1Image,
-      altText: t("projects.cards.ai.altText"),
-      title: t("projects.cards.ai.title"),
-      description: t("projects.cards.ai.description"),
-      tags: ["Python", "TensorFlow"],
-    },
   ];
+
+  const handleProjectClick = (project: typeof projects[0]) => {
+    setSelectedProject(project);
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedProject(null);
+  };
+
+  const handleContactUs = () => {
+    // Add your contact logic here
+    console.log("Contact us clicked for project:", selectedProject?.title);
+  };
 
   return (
     <section
@@ -108,15 +212,27 @@ const ProjectsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Projects Grid - 2x2 Layout */}
+        {/* Projects Grid */}
         <div className="w-full max-w-[1200px] mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
+              <ProjectCard 
+                key={index} 
+                {...project} 
+                onClick={() => handleProjectClick(project)}
+              />
             ))}
           </div>
         </div>
       </div>
+
+      {/* Project Popup */}
+      <ProjectPopup
+        project={selectedProject}
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+        onContactUs={handleContactUs}
+      />
     </section>
   );
 };
