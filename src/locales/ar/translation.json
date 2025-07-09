@@ -147,6 +147,17 @@
   "contact": {
     "question": "هل لديك أي سؤال عنا؟",
     "description": "لا تتردد في التواصل معنا",
-    "button": "اتصل بنا"
+    "button": "اتصل بنا",
+    "getInTouch": "تواصل معنا",
+    "ContactMethods": "طرق التواصل",
+    "ContactNumber": "رقم التواصل",
+    "whatsapp": "واتساب",
+    "telegram": "تيليجرام",
+    "call": "اتصال",
+    "SendMessage": "يسعدنا تواصلك معنا",
+    "name": "الاسم",
+    "phone": "رقم الهاتف",
+    "message": "الرسالة",
+    "send": "إرسال"
   }
 }

@@ -149,6 +149,17 @@
   "contact": {
     "question": "Have any question about us?",
     "description": "Don’t hesitate to contact us",
-    "button": "Contact Us"
+    "button": "Contact Us",
+    "getInTouch": "Get in Touch",
+    "ContactMethods": "Contact Methods",
+    "ContactNumber": "Contact Number",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "call": "Call",
+    "SendMessage": "We’re happy to hear from you",
+    "name": "Your Name",
+    "phone": "Phone Number",
+    "message": "Message",
+    "send": "Send"
   }
 }

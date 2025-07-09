@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import project1Image from "../images/project_1.png";
+import project2Image from "../images/project_2.png";
+import project3Image from "../images/project_3.png";
+import ContactPopup from "./ContactPopup";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -32,8 +35,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   tags,
   onClick,
 }) => (
-  <div 
-    className="group relative h-64 sm:h-72 lg:h-80 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer"
+  <div
+    className="group relative rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer"
     onClick={onClick}
   >
     <img
@@ -75,63 +78,47 @@ const ProjectPopup: React.FC<ProjectPopupProps> = ({
   onContactUs,
 }) => {
   const { t } = useTranslation();
+
   if (!isOpen || !project) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-pr rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-pr rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl border border-white/30">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors duration-200 z-10"
+          className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 z-10 shadow-lg hover:scale-105"
         >
-          <i className="fas fa-times text-black"></i>
+          <i className="fas fa-times text-black text-lg"></i>
         </button>
 
         {/* Project Image */}
-        <div className="relative h-64 overflow-hidden rounded-t-xl">
+        <div className="relative h-72 overflow-hidden rounded-t-2xl">
           <img
             src={project.imageSrc}
             alt={project.altText}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
         </div>
 
-        {/* Project Details */}
-        <div className="p-6">
-          <h3 className="text-2xl font-heading font-bold text-white mb-4">
-            {project.title}
-          </h3>
-          
-          <p className="text-white mb-6 leading-relaxed">
-            {project.description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.tags.map((tag, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 bg-acc/10 text-acc border border-acc/20 rounded-full text-sm font-medium"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div className="mb-3">
-            <h4 text-2xl font-heading font-bold text-white mb-4>
-            {t("projects.popup.contactMessage")}
+        <div className="p-8">
+          {/* Contact Message */}
+          <div className="mb-6 p-6 bg-gradient-to-r from-acc/10 to-acc/5 rounded-xl border border-acc/20 backdrop-blur-sm flex items-center justify-center">
+            <h4 className="text-xl font-heading font-bold text-white flex items-center justify-center gap-2">
+              <i className="fas fa-envelope text-acc"></i>
+              {t("projects.popup.contactMessage")}
             </h4>
           </div>
+
           {/* Contact Us Button */}
           <button
             onClick={onContactUs}
-            className="w-full bg-white text-pr font-semibold py-3 px-6 rounded-lg hover:bg-grayTone hover:scale-102 transition-all duration-300 shadow-lg border-0 flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-white to-gray-100 text-pr font-semibold py-4 px-6 rounded-xl hover:from-grayTone hover:to-gray-200 hover:scale-[1.02] transition-all duration-300 shadow-lg border-0 flex items-center justify-center gap-3 group"
           >
+            <i className="fas fa-paper-plane text-pr group-hover:translate-x-1 transition-transform duration-300"></i>
             {t("contact.button")}
           </button>
-
         </div>
       </div>
     </div>
@@ -140,6 +127,7 @@ const ProjectPopup: React.FC<ProjectPopupProps> = ({
 
 const ProjectsSection: React.FC = () => {
   const { t } = useTranslation();
+
   const [selectedProject, setSelectedProject] = useState<{
     imageSrc: string;
     altText: string;
@@ -147,33 +135,35 @@ const ProjectsSection: React.FC = () => {
     description: string;
     tags: string[];
   } | null>(null);
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [showContactPopup, setShowContactPopup] = useState(false);
 
   const projects = [
     {
       imageSrc: project1Image,
       altText: t("projects.cards.ecommerce.altText"),
-      title: t("projects.cards.ecommerce.title"),
-      description: t("projects.cards.ecommerce.description"),
-      tags: ["React", "Next.js"],
+      title: t(""),
+      description: t(""),
+      tags: [],
     },
     {
-      imageSrc: project1Image,
+      imageSrc: project2Image,
       altText: t("projects.cards.saas.altText"),
-      title: t("projects.cards.saas.title"),
-      description: t("projects.cards.saas.description"),
-      tags: ["TypeScript", "Node.js"],
+      title: t(""),
+      description: t(""),
+      tags: [],
     },
     {
-      imageSrc: project1Image,
+      imageSrc: project3Image,
       altText: t("projects.cards.mobile.altText"),
-      title: t("projects.cards.mobile.title"),
-      description: t("projects.cards.mobile.description"),
-      tags: ["React Native", "Firebase"],
+      title: t(""),
+      description: t(""),
+      tags: [],
     },
   ];
 
-  const handleProjectClick = (project: typeof projects[0]) => {
+  const handleProjectClick = (project: (typeof projects)[0]) => {
     setSelectedProject(project);
     setIsPopupOpen(true);
   };
@@ -184,8 +174,8 @@ const ProjectsSection: React.FC = () => {
   };
 
   const handleContactUs = () => {
-    // Add your contact logic here
     console.log("Contact us clicked for project:", selectedProject?.title);
+    setShowContactPopup(true);
   };
 
   return (
@@ -216,9 +206,9 @@ const ProjectsSection: React.FC = () => {
         <div className="w-full max-w-[1200px] mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <ProjectCard 
-                key={index} 
-                {...project} 
+              <ProjectCard
+                key={index}
+                {...project}
                 onClick={() => handleProjectClick(project)}
               />
             ))}
@@ -232,6 +222,12 @@ const ProjectsSection: React.FC = () => {
         isOpen={isPopupOpen}
         onClose={handleClosePopup}
         onContactUs={handleContactUs}
+      />
+
+      {/* Contact Popup */}
+      <ContactPopup
+        isOpen={showContactPopup}
+        onClose={() => setShowContactPopup(false)}
       />
     </section>
   );

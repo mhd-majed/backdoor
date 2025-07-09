@@ -7,7 +7,7 @@ const FooterSection: React.FC = () => {
   return (
     <section className="footerSection">
       <footer className="footer footer-horizontal footer-center bg-pr text-white rounded p-10 scroll-mt-16">
-        <nav dir="ltr">
+        {/* <nav dir="ltr">
           <div className="grid grid-flow-col gap-6 text-xl">
             <a href="#" aria-label={t("footer.social.twitter")}>
               <i className="fab fa-twitter"></i>
@@ -19,7 +19,7 @@ const FooterSection: React.FC = () => {
               <i className="fab fa-facebook-f"></i>
             </a>
           </div>
-        </nav>
+        </nav> */}
         <aside>
           <p>
             © {new Date().getFullYear()} -{" "}
